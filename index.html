@@ -28,21 +28,20 @@
             template:`
                 <form @click="clickMe">
                     <h1>{{title}}</h1>
-                    <h3>{{emailTitle}}</h3>
-                    <input type="email" v-model="email" /><br>
-                    <h3>{{passwordTitle}}</h3>
-                    <input type="password" v-model="password"/> <br>
+                    <login-input type="email" :label="emailLabel" /><br>
+                    <login-input type="password" :label="passwordLabel" /> <br>
                     <button>login</button>
                 </form>
                 
             `,
+            components:('login-input'),
             data(){
                 return{
                     email:'',
                     password:'',
-                    title:'login form',
-                    emailTitle:'Email',
-                    passwordTitle:'Password'
+                    title:'Login form',
+                    emailLabel:'Email',
+                    passwordLabel:'Password',
                 }
             },
             methods:{
@@ -54,9 +53,35 @@
             
             
         })
+        app.component('login-input',{
+            template: `
+                <label>
+                    {{label}}
+                    <input type="text">
+                </label>
+            `,
+            props:['label'],
+            
+            
+        })
         app.mount('#app')
 
     </script>
+    <style>
+        input{
+            margin: 10px;
+            display: flex;
+        }
+        label{
+            margin-left:  10px;
+        }
+        button{
+            margin-left: 10px;
+        }
+        h1{
+            margin-left: 10px;
+        }
+    </style>
     
 </body>
 </html>
