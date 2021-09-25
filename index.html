@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <login-form></login-form>
+
+    </div>
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app = Vue.createApp({
+            data: function(){
+                return{
+                
+                }
+            }
+        })
+
+        app.component('login-form',{
+            template:`
+                <form @click="clickMe">
+                    <h1>{{title}}</h1>
+                    <h3>{{emailTitle}}</h3>
+                    <input type="email" v-model="email" /><br>
+                    <h3>{{passwordTitle}}</h3>
+                    <input type="password" v-model="password"/> <br>
+                    <button>login</button>
+                </form>
+                
+            `,
+            data(){
+                return{
+                    email:'',
+                    password:'',
+                    title:'login form',
+                    emailTitle:'Email',
+                    passwordTitle:'Password'
+                }
+            },
+            methods:{
+                clickMe(){
+                    console.log(this.email, this.password)
+                }
+            }
+            
+            
+            
+        })
+        app.mount('#app')
+
+    </script>
+    
+</body>
+</html>
